@@ -2,24 +2,23 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='https://www.engphys.ubc.ca'>University of British Columbia, Engineering Physics</a>, specializaing in robotics and autonomous systems.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  more_info:
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a fourth-year Bachelor of Applied Science student in Engineering Physics at the University of British Columbia in Vancouver, Canada. Currently, I lead the Control subteam for [UBC Orbit Satellite Design Team](https://www.ubcorbit.com) and serve on the Software Subteam for the [UBC Rover Design Team](https://ubcrover.com).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research interests lie in machine learning, computer vision, control theory, and their applications to robotics and autonomous systems. In particular, I seek to integrate modern neural network methodologies into classical control problems, aiming to advance the state of the art in both domains.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+During the Summer of 2024, I was awarded a scholarship through the [Waterloo Engineering Rising Stars Fellowship Program](https://uwaterloo.ca/engineering/waterloo-engineering-rising-stars-fellowship-program) and joined the [Computer Vision for Smart Structure (CViSS) Lab](https://cviss.net) at the University of Waterloo under the supervision of [Prof. Chul Min Yeum](https://uwaterloo.ca/civil-environmental-engineering/profile/cmyeum). There, I investigated **Gaussian Splatting neural volume rendering**, working on methods to enhance training speed, improve reconstruction accuracy for high-fidelity structures, and improve camera pose estimation by incorporating LiDAR SLAM. In Fall 2024, I joined the [Robotics and Control Lab (RCL)](https://rcl.ece.ubc.ca) in UBC’s Department of Electrical and Computer Engineering, supervised by [Prof. Purang Abolmaesumi](https://ece.ubc.ca/purang-abolmaesumi/). My work focused on **fine-tuning [Florence 2](https://blog.roboflow.com/florence-2/) and [SAM 2](https://ai.meta.com/sam2/) for echocardiogram chamber segmentation**, as well as extending these image segmentation methods to video object segmentation and tracking. I have also held internships at [Microchip Technology](https://www.microchip.com) as a hardware engineer and at [TRIUMF](https://www.triumf.ca) (Canada's Particle Accelerator Center, formerly known as Canada's National Laboratory for Particle and Nuclear Physics) as an electronics research assistant.
+
+My coursework emphasizes mathematics and spans machine learning, computer vision, control systems, optimization, and physics, among other areas. I have been involved in a range of technical projects, including those from my design team experiences and individual robotics work, which you can learn more about in the [projects](projects) page.
