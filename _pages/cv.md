@@ -5,7 +5,7 @@ title: cv
 nav: true
 nav_order: 5
 cv_pdf: Hunter_coop_resume_2025.pdf
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+description: You can check out my CV on the right which contains some of my essential research/work experiences and technical projects. Below is a more exhaustive list which provides more content.
 toc:
   sidebar: left
 ---
