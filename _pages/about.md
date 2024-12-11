@@ -15,7 +15,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a fourth-year Bachelor of Applied Science student in Engineering Physics at the University of British Columbia in Vancouver, Canada. Currently, I lead the Control subteam for [UBC Orbit Satellite Design Team](https://www.ubcorbit.com) and serve on the Software Subteam for the [UBC Rover Design Team](https://ubcrover.com).
+I am a fourth-year Bachelor of Applied Science student in Engineering Physics at the University of British Columbia in Vancouver, Canada. Currently, I lead the Controls subteam for [UBC Orbit Satellite Design Team](https://www.ubcorbit.com) and serve on the Software subteam for the [UBC Rover Design Team](https://ubcrover.com).
 
 My research interests lie in machine learning, computer vision, control theory, and their applications to robotics and autonomous systems. In particular, I seek to integrate modern neural network methodologies into classical control problems, aiming to advance the state of the art in both domains.
 

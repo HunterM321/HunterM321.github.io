@@ -2,7 +2,7 @@
 layout: page
 permalink: /repositories/
 title: repositories
-description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
+description: Here are some of the repositories that I have contributed before or I am currently working on. I try to keep myself busy with coding in the midst of semesters and internships. Note that the GitLab repo for the UBC Orbit Satellite Design Team has yet to be open-sourced, so unfortunately I am not able to share it here. Our team is working on open-sourcing part of it and it will hopefully be here in the near future.
 nav: true
 nav_order: 4
 ---

@@ -1,14 +1,13 @@
-github_users:
-  - torvalds
-  - alshedivat
+# github_users:
+#   - HunterM321
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - HunterM321/PuckPilot
+  - tatemcc/mamba_ssm_on_dynabench
+  - HunterM321/M.U.D._AI_CNN
+  - tonyli2/M.U.D._AI
+  - tonyli2/mario-kart-robot
+  - UBC-Snowbots/RoverFlake2
+  - PMT-Test-Facilities/ptf-analysis
