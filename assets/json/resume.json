@@ -5,11 +5,11 @@
     "email": "masibo@student.ubc.ca",
     "phone": "+1 (236) 967-4648",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "5960 Student Union Blvd",
+      "postalCode": "V6T 1Z1",
+      "city": "Vancouver",
+      "countryCode": "Canada",
+      "region": "British Columbia"
     },
     "profiles": [
       {
@@ -86,7 +86,7 @@
   "projects": [
     {
       "name": "Control System Lead - UBC Orbit Satellite Design Team",
-      "summary": "Currently working in Attitude and Orbit Control System (AOCS) subteam which encompasses attitude and orbit sensors, attitude estimation and guidance, attitude and orbit control algorithms, attitude control actuators for our 1U CubeSat.",
+      "summary": "Currently working in Attitude and Orbit Control System (AOCS) subteam which encompasses attitude and orbit sensors, attitude estimation and guidance, attitude and orbit control algorithms, attitude control actuators for our 1U CubeSat",
       "highlights": ["Co-developing a Python simulator for satellite attitude control in low Earth orbit, including magnetic actuator model, low-pass filter for onboard sensors, sensor fusion, and satellite system integration.",
                      "Developed optimized firmware for embedded systems using the TMS570 microcontroller, leveraging high-performance DSP library for signal analysis, filtering, and transformation, as well as advanced algorithms such as the Extended Kalman Filter and Sun Model.",
                      "Created training code for DSP library functions in C, providing examples and exercise for new team members.",
@@ -94,6 +94,61 @@
       "startDate": "2021-09-01",
       "endDate": "Present",
       "url": "https://www.ubcorbit.com"
+    },
+    {
+      "name": "Robotics Software Engineer - UBC Rover Design Team",
+      "summary": "Currently working in the Software subteam which encompasses the rover's autonomous navigation, communication, robotic arm control, and simulation",
+      "highlights": ["Successfully implemented visual-odometry SLAM in ROS2 using Intel RealSense D415 RGB-D camera for autonomous rover navigation and obstacle avoidance.",
+                     "Experimenting with sensor fusion to achieve exceptional localization and mapping performance, including utilizing multiple RGB-D cameras and 2D/3D LiDAR.",
+                     "Developing simulations in Gazebo Ignition for rapid navigation software prototyping and Isaac Sim for applying reinforcement learning to control the rover’s robotic arm for various tasks, such as keyboard pressing and switch flickering.",
+                     "Scheduled to compete in University Rover Challenge (URC) and Canadian International Rover Challenge (CIRC) in 2025."],
+      "startDate": "2024-09-01",
+      "endDate": "Present",
+      "url": "https://ubcrover.com"
+    },
+    {
+      "name": "Deep Learning-based Dynamical System Solver",
+      "summary": "Rethinking deep learning approach for modeling dynamical systems governed by Partial Differential Equations (PDE) by incorporating both spatial and temporal feature learning.",
+      "highlights": ["Successfully modeled dynamical systems by adding Mamba state space model to learn the temporal features on top of spatial feature extraction, proposing an alternative approach to traditional numerical PDE solvers.",
+                     "Developed two varients of our model to learn spatial features, one uses CNN and the other uses image patching, inspired by the patching method in vision transformer.",
+                     "Compared to SOTA NeuralPDE, our model achieves competitive mean squared error at half the training time.",
+                     "Tested our models using the advection equation and Burgers' equation which both model fluid dynamics, with the latter being a nonlinear second-order PDE."],
+      "startDate": "2024-09-01",
+      "endDate": "2024-12-04",
+      "url": "https://github.com/tatemcc/mamba_ssm_on_dynabench"
+    },
+    {
+      "name": "PuckPilot Air Hockey Table",
+      "summary": "Capstone project sponsored by Engineering Physics Project Lab: an air hockey table that integrates computer vision for tracking and reinforcement learning for gameplay decision",
+      "highlights": ["Developing computer vision algorithms for simultaneous puck and mallet tracking using FLIR Blackfly high-speed camera.",
+                     "Software system integration using ROS 2 that performs camera calibration, runs computer vision algorithms, deploys agent nodes, handles raw and processed data logging, interfaces with microcontrollers for motor control and feedback, and serves as the central control authority.",
+                     "Sim-to-real reinforcement learning for human vs machine gameplay using TorchRL.",
+                     "Scheduled to develop other control methods such as Model Predictive Control (MPC) to compare against RL."],
+      "startDate": "2024-09-01",
+      "endDate": "Present",
+      "url": "https://github.com/HunterM321/PuckPilot"
+    },
+    {
+      "name": "Autonomous Vehicle Competition",
+      "summary": "ENPH 353 Engineering Physics Project I: self-driving vehicle in simulated environment using classical computer vision techniques, CNN, and imitation learning.",
+      "highlights": ["Engineered a self-driving vehicle with ROS and performed simulation in Gazebo Classic, incorporating advanced computer vision and machine learning for dynamic text recognition and response to road conditions.",
+                     "Implemented imitation learning and real-time camera-based vision systems in the vehicle, enabling sophisticated autonomous navigation and decision-making in complex simulation environments.",
+                     "The vehicle was also able to automatically identity various signs next to the road, recognize and interpret the words on the signs for additional points.",             
+                     "Using a monocular camera as input, our system is able to handle various road condition by dynamically switching between different neural networks we trained and even switching to PID mode in specific conditions."],
+      "startDate": "2023-09-01",
+      "endDate": "2023-12-20",
+      "url": "https://drive.google.com/file/d/1zNQZ3HteRbgJiphn579LMEFnnXrhlaaz/view?usp=sharing"
+    },
+    {
+      "name": "Autonomous Robot Competition",
+      "summary": "ENPH 253 Introduction to Instrument Design: self-driving vehicle in real-world setting using inertial odometry, tape sensing, and IR sensing.",
+      "highlights": ["Designed, manufactured, and integrated the mechanical, electrical, and software components of a reaction wheel system; inspired by spacecraft attitude control system, our reaction wheel employed conservation of angular momentum to ensure robot mid-air balance.",
+                     "Implemented complementary filter for sensor fusion algorithm using an IMU, utilizing all 9 DoF from the 3-axis gyroscope, accelerometer, and magnetometer to ensure precise robot orientation determination.",
+                     "Developed PID algorithm for lane following, acquring tape readings from IR emitter-sensor pair.",
+                     "Leveraging Fast Fourier Transform (FFT), our IR sensing system detected the sigal from the IR beacon, filtered out the background IR noise, and ensured our robot follow a straight line in uneven terrain."],
+      "startDate": "2023-05-01",
+      "endDate": "2023-08-20",
+      "url": "https://github.com/tonyli2/mario-kart-robot"
     }
   ],
   "awards": [
