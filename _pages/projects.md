@@ -2,10 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Here are some of my work and personal projects. This page is still being updated for more content, please stay tuned! The images you see here are generated using AI.
 nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [work, personal]
 horizontal: false
 ---
 

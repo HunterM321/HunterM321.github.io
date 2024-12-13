@@ -1,10 +1,10 @@
 ---
 layout: page
-title: project 6
-description: a project with no image
-img:
+title: Autonomous Vehicle Competition
+description: UBC ENPH 353 self-directed robotaxi challenge
+img: assets/img/self_driving.jpg
 importance: 4
-category: fun
+category: personal
 ---
 
 Every project has a beautiful feature showcase page.

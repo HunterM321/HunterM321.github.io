@@ -1,10 +1,10 @@
 ---
 layout: page
-title: project 9
-description: another project with an image 🎉
-img: assets/img/6.jpg
+title: Autonomous Robot Competition
+description: UBC ENPH 253 self-directed robotics challenge, aka Engineering Physics Robot Summer
+img: assets/img/robot.jpg
 importance: 4
-category: fun
+category: personal
 ---
 
 Every project has a beautiful feature showcase page.

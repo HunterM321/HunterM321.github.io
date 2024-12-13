@@ -1,10 +1,10 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
+title: Humam vs Machine Air Hockey
+description: UBC Engineering Physics capstone project
+img: assets/img/air_hockey.jpg
 importance: 3
-category: fun
+category: personal
 ---
 
 Every project has a beautiful feature showcase page.

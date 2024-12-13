@@ -29,12 +29,12 @@
       "startDate": "2022-09-01",
       "endDate": "2026-05-01",
       "score": "10",
-      "courses": ["Machine learning including supervised and unsupervised learning, VAE, neural networks, and reinforcement Q-learning",
-                  "Computer vision including SIFT feature detection and matching, stereo imaging, and structure from motion",
-                  "Data structure and algorithms, software engineering",
-                  "Control systems, signals and systems, circuit analysis",
-                  "Calculus I-IV, applied linear algebra, optimization, ODE and PDE, complex analysis",
-                  "Advanced classical mechanics, electromagnetism, quantum mechanics, special relativity"]
+      "courses": ["<b>Machine learning</b> including supervised and unsupervised learning, VAE, neural networks, and reinforcement learning.",
+                  "<b>Computer vision</b> including feature detection and matching, stereo imaging, and Structure from Motion (SfM).",
+                  "<b>Data structure and algorithms</b>, software engineering and design principles, computer systems and microcontrollers.",
+                  "<b>Control systems</b>, signals and systems, circuit analysis.",
+                  "Calculus I-IV, applied linear algebra, <b>probability</b>, <b>optimization</b>, ODE and PDE, complex analysis.",
+                  "Advanced classical mechanics, electromagnetism, quantum mechanics, special relativity."]
     }
   ],
   "work": [
@@ -57,7 +57,7 @@
       "endDate": "2024-08-20",
       "summary": "Conducted research under Dr. Chul Min Yeum on Gaussian Splatting neural volume rendering",
       "highlights": ["Applied spatial and semantic deep learning (SAM) computer vision methods for structural health monitoring.",
-                     "Successfully accelerated training speed and rendeirng quality by incorporating monocular depth estimation and salient object detection to eliminate background.",
+                     "Successfully accelerated training speed and imporved rendeirng quality, reflected by a reduction in peak signal-to-noise ratio (PSNR), by incorporating monocular depth estimation and salient object detection to eliminate background.",
                      "Incorporated LiDAR SLAM into Gaussian Splatting to enhance camera pose estimation and aid UAV autonomy mission."]
     },
     {
@@ -78,7 +78,8 @@
       "startDate": "2021-09-01",
       "endDate": "2021-12-20",
       "summary": "Conducted research under Dr. Thomas Lindner on photomultiplier tubes for neutrino detection",
-      "highlights": ["Successfully developed software enabling electronics mainboard read‐out and data analysis for multi‐photomultiplier tube (mPMT).",
+      "highlights": ["Successfully developed software enabling electronics mainboard read‐out and data analysis for multi‐photomultiplier tubes (mPMT).",
+                     "Through rigorous implementation and testing, our setup was able to capture the emission of a single photon while filtering out the unwanted light source from outside environment.",
                      "Created automated acquisition scripts to enable precise extraction of electronics pulse rates for both calibration and stringent quality control.",
                      "Photomultipliers will be used for world's largest neutrino oscillation detection experiment—Hyper-Kamiokande, in Japan."]
     }
@@ -107,17 +108,6 @@
       "url": "https://ubcrover.com"
     },
     {
-      "name": "Deep Learning-based Dynamical System Solver",
-      "summary": "Rethinking deep learning approach for modeling dynamical systems governed by Partial Differential Equations (PDE) by incorporating both spatial and temporal feature learning.",
-      "highlights": ["Successfully modeled dynamical systems by adding Mamba state space model to learn the temporal features on top of spatial feature extraction, proposing an alternative approach to traditional numerical PDE solvers.",
-                     "Developed two varients of our model to learn spatial features, one uses CNN and the other uses image patching, inspired by the patching method in vision transformer.",
-                     "Compared to SOTA NeuralPDE, our model achieves competitive mean squared error at half the training time.",
-                     "Tested our models using the advection equation and Burgers' equation which both model fluid dynamics, with the latter being a nonlinear second-order PDE."],
-      "startDate": "2024-09-01",
-      "endDate": "2024-12-04",
-      "url": "https://github.com/tatemcc/mamba_ssm_on_dynabench"
-    },
-    {
       "name": "PuckPilot Air Hockey Table",
       "summary": "Capstone project sponsored by Engineering Physics Project Lab: an air hockey table that integrates computer vision for tracking and reinforcement learning for gameplay decision",
       "highlights": ["Developing computer vision algorithms for simultaneous puck and mallet tracking using FLIR Blackfly high-speed camera.",
@@ -127,6 +117,17 @@
       "startDate": "2024-09-01",
       "endDate": "Present",
       "url": "https://github.com/HunterM321/PuckPilot"
+    },
+    {
+      "name": "Deep Learning-based Dynamical System Solver",
+      "summary": "Rethinking deep learning approach for modeling dynamical systems governed by Partial Differential Equations (PDEs) by incorporating both spatial and temporal feature learning.",
+      "highlights": ["Successfully modeled dynamical systems by adding Mamba state space model to learn the temporal features on top of spatial feature extraction, proposing an alternative approach to traditional numerical PDE solvers.",
+                     "Developed two varients of our model to learn spatial features, one uses CNN and the other uses image patching, inspired by the patching method in vision transformer.",
+                     "Compared to SOTA NeuralPDE, our model achieves competitive mean squared error at half the training time.",
+                     "Tested our models using the advection equation and Burgers' equation which both model fluid dynamics, with the latter being a nonlinear second-order PDE."],
+      "startDate": "2024-09-01",
+      "endDate": "2024-12-04",
+      "url": "https://github.com/tatemcc/mamba_ssm_on_dynabench"
     },
     {
       "name": "Autonomous Vehicle Competition",
@@ -157,7 +158,7 @@
       "date": "2024-03-06",
       "awarder": "University of Waterloo, Faculty of Engineering",
       "url": "https://uwaterloo.ca/engineering/waterloo-engineering-rising-stars-fellowship-program",
-      "summary": "The fellowship recognizes exceptional engineering undergraduate students in Canada, offering them an opportunity to engage in cutting-edge engineering research under the mentorship of a University of Waterloo professor. The award includes a stipend of $5,500, along with full coverage of housing and meals, and a 50% reimbursement for travel expenses. Additionally, recipients will be granted a supplementary $2,000 award to support their future graduate studies."
+      "summary": "The fellowship recognizes exceptional engineering undergraduate students in Canada, offering them an opportunity to engage in cutting-edge engineering research under the mentorship of a University of Waterloo professor. The award includes a stipend of $5,500, along with full coverage of housing and meals, and a 50% reimbursement for travel expenses. Additionally, recipients will be granted a supplementary $2,000 scholarship to support their future graduate studies."
     }
   ],
   "skills": [

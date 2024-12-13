@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: Gaussian Splatting
+description: Computer Vision for Smart Structure Lab, UWaterloo
+img: assets/img/GS.jpg
 importance: 1
 category: work
 related_publications: true

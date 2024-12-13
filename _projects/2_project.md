@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
+title: CubeSat Control System
+description: UBC Orbit Satellite Design Team, Attitude and Orbit Control System subteam
+img: assets/img/sat.jpg
 importance: 2
 category: work
 giscus_comments: true
