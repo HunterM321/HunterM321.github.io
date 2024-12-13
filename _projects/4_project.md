@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: page
 title: Deep Learning-based Dynamical System Solver
 description: UBC CPEN 355 Machine Learning self-directed course project
@@ -179,4 +179,4 @@ As shown above, MambaPatchMOL shows lower MSE at low rollouts. However, the adva
 
 <br>The above table shows the S2S MSE comparison between the two models. Here, MambaPatchMOL takes the throne, specifically when it was running in **parallel** mode introduced in the model section above. This shows that when a Mamba SSM is in charge of its own patch instead of all the patches, the parameters can be tuned for that specific patch without being polluted by patches that are further away, allowing greater flexibility and boosting the model accuracy.
 
-<br>_If you are interested in checking out our full report, you can do so by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing)._
+<br>_If you are interested in checking out our full report, you can do so by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing)._ -->
