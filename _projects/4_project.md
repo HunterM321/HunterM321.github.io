@@ -113,7 +113,7 @@ By separating spatial and temporal feature learning into distinct stages, MambaC
 Both architectures leverage the strengths of the Mamba module for temporal modeling, effectively overcoming the limitations of most NN-based PDE solvers that focus solely on learning spatial features while neglecting temporal dependencies, thereby demonstrating improved performance in capturing spatio-temporal features in dynamical systems.
 
 #### Dataset
-The project uses the [DynaBench](https://dynabench.github.io) Advection Equation dataset, which features sparsely distributed data in a 15 by 15 grid structure. The advection equation is a linear first-order equation:
+The project uses the [DynaBench](https://dynabench.github.io) Advection Equation dataset, which features sparsely distributed data in a $$15 \times 15$$ grid structure. The advection equation is a linear first-order equation:
 
 $$
 \frac{\partial u}{\partial t} = -\nabla \cdot (\mathbf{c}u)
