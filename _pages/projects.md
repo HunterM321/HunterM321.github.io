@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Here are some of my work and personal projects. This page is still being updated for more content, please stay tuned! The images you see here are generated using AI.
+description: Here are some of my work and personal projects. This page is still being updated for more content, please stay tuned! Currently I finished the Deep Learning-based Dynamical System Solver page and I am currently working on the CubeSat Control System page. The images you see here are generated using AI.
 nav: true
 nav_order: 3
 display_categories: [work, personal]

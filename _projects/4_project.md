@@ -10,6 +10,8 @@ category: personal
 #### Overview
 This project explores the use of **[State Space Models](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train)** (SSMs), specifically the **[Mamba](https://arxiv.org/pdf/2312.00752)** architecture, as advanced solvers for dynamical systems governed by partial differential equations (PDEs). Unlike traditional methods, SSMs offer **theoretically infinite context windows** and **linear scalability**. When combined with spatial feature learning techniques such as Convolutional Neural Networks (CNNs) or image patching, SSMs excel at capturing complex **spatio-temporal** dependencies in dynamical systems, making them a powerful alternative to traditional methods.
 
+_If you are interested in learning more about this project, you can check out our full report by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing)._
+
 #### Background
 Dynamical systems are typically modeled by PDEs who parameterize the state of the system, $$u$$, as a function of the state itself and its spatial derivative. Using a simple first order system with two spatial dimensions as an exmaple, we can describe such PDEs in the form of:
 
@@ -40,7 +42,16 @@ $$
 \frac{\partial u}{\partial t} = f(u, t) \approx \text{CNN}_{\phi}(u)
 $$
 
-This is where we wanted to introduce our method's novelty: instead of purely relying on spatial features, we must also take advantage of the temporal features in dynamical systems. This is especially true considering the majority of dynamical systems are **chaotic**, which means unlike speech or LLM sequence modeling, a small perturbation of the initial state of the system can result in a vastly different state in a short amount of time.
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/neuralpde.png" title="NeuralPDE architecture" class="img-fluid rounded" %}
+    </div>
+</div>
+<div class="caption">
+    NeuralPDE architecture, notice how they were able to parameterize temporal derivative simply by using CNN
+</div>
+
+This is where we wanted to introduce our method's novelty: instead of purely relying on spatial features, we must also take advantage of the temporal features in dynamical systems. This is especially true considering the majority of dynamical systems are **[chaotic](https://en.wikipedia.org/wiki/Chaos_theory)**, which means unlike speech or LLM sequence modeling, a small perturbation to the initial state of the system can result in a vastly different state in a short amount of time.
 
 #### Proposed models
 ##### MambaCNNMOL
@@ -178,5 +189,3 @@ As shown above, MambaPatchMOL shows lower MSE at low rollouts. However, the adva
 </div>
 
 <br>The above table shows the S2S MSE comparison between the two models. Here, MambaPatchMOL takes the throne, specifically when it was running in **parallel** mode introduced in the model section above. This shows that when a Mamba SSM is in charge of its own patch instead of all the patches, the parameters can be tuned for that specific patch without being polluted by patches that are further away, allowing greater flexibility and boosting the model accuracy.
-
-<br>_If you are interested in checking out our full report, you can do so by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing)._

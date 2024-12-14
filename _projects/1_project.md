@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Gaussian Splatting
+title: 3D Gaussian Splatting
 description: Computer Vision for Smart Structure Lab, UWaterloo
 img: assets/img/GS.jpg
 importance: 1
