@@ -119,7 +119,7 @@
       "url": "https://github.com/HunterM321/PuckPilot"
     },
     {
-      "name": "Deep Learning-based Dynamical System Solver",
+      "name": "Deep Learning-Based Dynamical System Solver",
       "summary": "Rethinking deep learning approach for modeling dynamical systems governed by Partial Differential Equations (PDEs) by incorporating both spatial and temporal feature learning.",
       "highlights": ["Successfully modeled dynamical systems by adding Mamba state space model to learn the temporal features on top of spatial feature extraction, proposing an alternative approach to traditional numerical PDE solvers.",
                      "Developed two varients of our model to learn spatial features, one uses CNN and the other uses image patching, inspired by the patching method in vision transformer.",

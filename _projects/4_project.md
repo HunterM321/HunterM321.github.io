@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Deep Learning-based Dynamical System Solver
+title: Deep Learning-Based Dynamical System Solver
 description: UBC CPEN 355 Machine Learning self-directed course project
 img: assets/img/pde.jpg
 importance: 3
