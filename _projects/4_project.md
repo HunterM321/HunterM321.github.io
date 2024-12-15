@@ -10,10 +10,10 @@ category: personal
 #### Overview
 This project explores the use of **[State Space Models](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train)** (SSMs), specifically the **[Mamba](https://arxiv.org/pdf/2312.00752)** architecture, as advanced solvers for dynamical systems governed by partial differential equations (PDEs). Unlike traditional methods, SSMs offer **theoretically infinite context windows** and **linear scalability**. When combined with spatial feature learning techniques such as Convolutional Neural Networks (CNNs) or image patching, SSMs excel at capturing complex **spatio-temporal** dependencies in dynamical systems, making them a powerful alternative to traditional methods.
 
-_If you are interested in learning more about this project, you can check out our full report by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing). You may also wish to checkout our GitHub repo [here](https://github.com/tatemcc/mamba_ssm_on_dynabench)._
+_If you are interested in learning more about this project, you can check out our full report by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing). You may also wish to check out our GitHub repo [here](https://github.com/tatemcc/mamba_ssm_on_dynabench)._
 
 #### Background
-Dynamical systems are typically modeled by PDEs who parameterize the state of the system, $$u$$, as a function of the state itself and its spatial derivative. Using a simple first order system with two spatial dimensions as an exmaple, we can describe such PDEs in the form of:
+Dynamical systems are typically modeled by PDEs who parameterize the state of the system, $$u$$, as a function of the state itself and its spatial derivative. Using a simple first-order system with two spatial dimensions as an exmaple, we can describe such PDEs in the form of:
 
 $$
 \frac{\partial u}{\partial t} = f\left(u, t, \frac{\partial u}{\partial x}, \frac{\partial u}{\partial y}\right)

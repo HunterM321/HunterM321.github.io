@@ -99,7 +99,7 @@
     {
       "name": "Robotics Software Engineer - UBC Rover Design Team",
       "summary": "Currently working in the Software subteam which encompasses the rover's autonomous navigation, communication, robotic arm control, and simulation",
-      "highlights": ["Successfully implemented visual-odometry SLAM in ROS2 using Intel RealSense D415 RGB-D camera for autonomous rover navigation and obstacle avoidance.",
+      "highlights": ["Successfully implemented visual-odometry SLAM in ROS 2 using Intel RealSense D415 RGB-D camera for autonomous rover navigation and obstacle avoidance.",
                      "Experimenting with sensor fusion to achieve exceptional localization and mapping performance, including utilizing multiple RGB-D cameras and 2D/3D LiDAR.",
                      "Developing simulations in Gazebo Ignition for rapid navigation software prototyping and Isaac Sim for applying reinforcement learning to control the rover’s robotic arm for various tasks, such as keyboard pressing and switch flickering.",
                      "Scheduled to compete in University Rover Challenge (URC) and Canadian International Rover Challenge (CIRC) in 2025."],
