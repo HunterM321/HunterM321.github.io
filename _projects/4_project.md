@@ -13,7 +13,7 @@ This project explores the use of **[State Space Models](https://huggingface.co/b
 _If you are interested in learning more about this project, you can check out our full report by clicking [here](https://drive.google.com/file/d/1Y4HOeHQ3rJqTKTam8SC0FJ8IltrXjNWM/view?usp=sharing). You may also wish to check out our GitHub repo [here](https://github.com/tatemcc/mamba_ssm_on_dynabench)._
 
 #### Background
-Dynamical systems are typically modeled by PDEs who parameterize the state of the system, $$u$$, as a function of the state itself and its spatial derivative. Using a simple first-order system with two spatial dimensions as an exmaple, we can describe such PDEs in the form of:
+Dynamical systems are typically modeled by PDEs who parameterize the rate of change of the system's state, $$\frac{\partial u}{\partial t}$$, as a function of the state itself and its spatial derivative. Using a simple first-order system with two spatial dimensions as an exmaple, we can describe such PDEs in the form of:
 
 $$
 \frac{\partial u}{\partial t} = f\left(u, t, \frac{\partial u}{\partial x}, \frac{\partial u}{\partial y}\right)
@@ -28,7 +28,7 @@ $$
     Sample dynamical system and its temporal derivative evolving with time
 </div>
 
-Traditionally, PDEs are solved numerically using iterative methods that approximate $$\frac{\partial u}{\partial t}$$ over time. A common example is **Euler’s method**:
+Traditionally, PDEs are solved numerically by breaking them down to systems of ordinary differential equations (ODEs) and using iterative methods that approximate $$\frac{\partial u}{\partial t}$$ over time. A common example is **Euler’s method**:
 
 $$
 u_{t+1} = u_t + f(u_t, t)\Delta t
