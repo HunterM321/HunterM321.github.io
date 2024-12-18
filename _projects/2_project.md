@@ -222,7 +222,7 @@ $$
 \mathbb{E}[\boldsymbol{\psi}_i \boldsymbol{\psi}_j^\top] = 0, \: \forall i \neq j
 $$
 
-Note that $$\mathbf{Q}$$ and $$\mathbf{R}$$ are not to be confused with the **state covariance matrix** $$\mathbf{P}$$. One noticeable difference is that there is no restriction on whether $$\mathbf{P}$$ should be a diagonal matrix. In fact, it is highly unlikely that $$\mathbf{P}$$ is a diagonal matrix since it is constantly getting updated in each iteration. The state covariance matrix undergoes the same prediction and correction procedure as its buddy, the state vector $$\mathbf{x}$$. The predicted $$\hat{\mathbf{P}}_{k}$$ is directly influenced by $$\mathbf{Q}$$, and the value is corrected indirectly by $$\hat{\mathbf{Q}}_{k}$$ to yield the final state covariance $$\mathbf{P}_{k}$$.
+Note that $$\mathbf{Q}$$ and $$\mathbf{R}$$ are not to be confused with the **state covariance matrix** $$\mathbf{P}$$. One noticeable difference is that there is no restriction on whether $$\mathbf{P}$$ should be a diagonal matrix. In fact, it is highly unlikely that $$\mathbf{P}$$ is a diagonal matrix since it is constantly getting updated in each iteration. The state covariance matrix undergoes the same prediction and correction procedure as its buddy, the state vector $$\mathbf{x}$$. The predicted $$\hat{\mathbf{P}}_{k}$$ is directly influenced by $$\mathbf{Q}_{k-1}$$, and the value is corrected indirectly by $$\mathbf{R}_{k}$$ to yield the final state covariance $$\mathbf{P}_{k}$$.
 
 So far our discussion only involves things that are common between KF and EKF, and we have not gone into what makes EKF special—handling nonlinear system with proper linearization. In fact, our system dynamics model is indeed a nonlinear system, as reflected by $$\mathbf{F}$$ and $$\mathbf{G}$$. To obtain the predicted state covariance matrix $$\hat{\mathbf{P}}_k$$, we need to first linearize both $$\mathbf{F}$$ and $$\mathbf{G}$$. This is done through **[Taylor expansion](https://en.wikipedia.org/wiki/Taylor_series)** about the point $$(\mathbf{x}_{k-1}, \mathbf{u}_{k-1})$$, equivalent to finding the **[Jacobians](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)** of $$\mathbf{F}$$ and $$\mathbf{G}$$. This first-order approximation is computationally efficient and precise enough for our application, especially considering we don't have the luxury to run heavy tasks on our MCU. The linearized $$\mathbf{F}_{k-1}$$ and $$\mathbf{L}_{k-1}$$ can be computed by:
 
@@ -233,16 +233,16 @@ $$
 \end{aligned}
 $$
 
-Lastly, I will introduce the two quantities that help us correct our prediction and output the final Gaussian distribution composed of $$\mathbf{x}_k$$ and $$\mathbf{P}_k$$, which are the **innovation** $$\mathbf{v}_k$$ and the **Kalman gain** $$\mathbf{K}_k$$. The innovation is sometimes referred to as the **measurement residual**. In short, it measures the gap between the predicted state and measurement. The bigger the gap, the more _off_ our measurement is compared to our system dynamics model, and the more correction we need to apply to our predicted state. The Kalman gain measures how much we **DO NOT** trust our system dynamics model, or how much we **DO** trust our measurement. To simplify the math, let's consider an 1D model with scalar equations. Imagine if $$K_k=0$$, that means our predicted process variance $$\hat{P}_k$$ must be 0; in other words, the **probability distribution function** (PDF) of the prediction in the image above is a **[Dirac delta function](https://en.wikipedia.org/wiki/Dirac_delta_function)** $$\delta(\hat{x}_k)$$. Our EKF would thus fully trust our system dynamics model:
+Lastly, I will introduce the two quantities that help us correct our prediction and output the final Gaussian distribution composed of $$\mathbf{x}_k$$ and $$\mathbf{P}_k$$, which are the **innovation** $$\mathbf{v}_k$$ and the **Kalman gain** $$\mathbf{K}_k$$. The innovation is sometimes referred to as the **measurement residual**. In short, it measures the gap between the predicted state and measurement. The bigger the gap, the more _off_ our measurement is compared to our system dynamics model, and the more correction we need to apply to our predicted state. The Kalman gain measures how much we **DO NOT** trust our system dynamics model, or conversely how much we **DO** trust our measurement. To simplify the math, let's consider an 1D model with scalar equations. Imagine if $$K_k=0$$, that means our predicted process variance $$\hat{P}_k$$ must be 0; in other words, the **probability distribution function** (PDF) of the prediction is a **[Dirac delta function](https://en.wikipedia.org/wiki/Dirac_delta_function)** $$\delta(\hat{x}_k)$$. Our EKF would thus fully trust our system dynamics model:
 
 $$
 x_k = \hat{x}_k
 $$
 
-At the other end of the spectrum, if $$K_k=1$$, that means our measurement variance $${R}_k$$ must be 0. The PDF of the measurement in the image above would then be a Dirac delta function $$\delta(y_k)$$. Our EKF would then fully trust our measurement instead:
+At the other end of the spectrum, if $$K_k=1$$, that means our measurement variance $${R}_k$$ must be 0. The PDF of the measurement would then be a Dirac delta function $$\delta(y_k)$$. Our EKF would then fully trust our measurement instead:
 
 $$
 x_k = y_k
 $$
 
-In reality, it is pretty much guaranteed that $$\mathbf{K}_k$$ would be somewhere between 0 and 1, and the output state $$\mathbf{x}_k$$ would be somewhere in between the prediction and the measurement.
+In reality, it is pretty much guaranteed that $$\mathbf{K}_k$$ would be somewhere in between 0 and 1, and the output state $$\mathbf{x}_k$$ would be somewhere in between the prediction and the measurement.
