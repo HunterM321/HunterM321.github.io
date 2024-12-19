@@ -8,7 +8,7 @@ category: work
 related_publications: false
 ---
 
-This page is still being updated, please check back later. For now, I recommend checking out my [CubeSat Control System](../2_project) page and my [Deep Learning-Based Dynamical System Solver](../4_project) page, some really cool stuff happening there 😃.
+This page is still being updated, please check back later. I also recommend checking out my [CubeSat Control System](../2_project) page and my [Deep Learning-Based Dynamical System Solver](../4_project) page, some really cool stuff happening there 😃.
 
 #### Overview
 Throughout the 4 months I stayed in UBC's [Robotics and Control Lab](https://rcl.ece.ubc.ca) (RCL) as a research intern, I worked on image and video segmentation of [echocardiogram](https://www.mayoclinic.org/tests-procedures/echocardiogram/about/pac-20393856). Specifically, I focused on chamber segmentation. The ultimate goal of this project is to teach a single agent to **simultaneously** segment all 4 chambers, which could be done by incorporating semantic information or scene graph, instead of training individual agent for each chamber segmentation. I mainly worked on two sub-projects. The first one is baseline testing for [MedSAM](https://www.nature.com/articles/s41467-024-44824-z) and [SAM 2](https://ai.meta.com/sam2/). The second one is video object tracking and segmentation using [SAMURAI](https://yangchris11.github.io/samurai/), which is also a derivative of SAM 2. I would like to focus more on discussing the SAMURAI project as I think it is the more interesting one.
@@ -43,13 +43,13 @@ So how does SAMURAI improve upon the model proposed in SAM 2? In short, since SA
 
 <div class="row">
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/first_frame.jpg" title="Sample first frame" class="img-fluid rounded" %}
+        {% include figure.liquid loading="eager" path="assets/img/first_frame.jpg" title="Sample first frame" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/middle_frame.jpg" title="Sample middle frame" class="img-fluid rounded" %}
+        {% include figure.liquid loading="eager" path="assets/img/middle_frame.jpg" title="Sample middle frame" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/last_frame.jpg" title="Sample last frame" class="img-fluid rounded" %}
+        {% include figure.liquid loading="eager" path="assets/img/last_frame.jpg" title="Sample last frame" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
