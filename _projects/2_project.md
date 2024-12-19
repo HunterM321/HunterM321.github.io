@@ -202,7 +202,7 @@ The derivation of these equations are rather daunting and time-consuming (yet ex
     </div>
 </div>
 <div class="caption">
-    Kalman Filter ouputs another Gaussian distribution by combining the prediction and measurement Gaussian distributions (note that the notation used here is a bit different than ours)
+    KF ouputs another Gaussian distribution by combining the prediction and measurement Gaussian distributions (note that the notation used here is a bit different than ours)
 </div>
 
 Going back to the EKF equations above, there are two very important **[covariance matrices](https://en.wikipedia.org/wiki/Covariance_matrix)** that dictate the confidence of EKF's final output value. They are the **process covariance matrix** $$\mathbf{Q}$$ and the **measurement covariance matrix** $$\mathbf{R}$$. _The process covariance matrix captures the uncertainty arising from system dynamics, while the measurement covariance matrix captures the uncertainty arising from the measuring instruments_. They are **diagonal matrices** since we made the assumption that the **random variables** in each matrix are independent of each other, resulting in a covariance of 0 in the non-diagonals. For example, it is fair to assume that the gyroscope measurement in each axis is **independent** and bears no impact on the other axes. We additionally made the assumption that the process noises are also independent of the measurement noises. In reality, these assumptions may very well not be the case, but it is the best we could do. The matrices are derived from the process and measurement noises introduced in the spacecraft dynamics section. We can formulate $$\mathbf{Q}$$ and $$\mathbf{R}$$ in the following way:
@@ -246,3 +246,15 @@ x_k = y_k
 $$
 
 In reality, it is pretty much guaranteed that $$\mathbf{K}_k$$ would be somewhere in between 0 and 1, and the output state $$\mathbf{x}_k$$ would be somewhere in between the prediction and the measurement.
+
+<div class="row">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/quat_no_ekf.png" title="Quat estimation w/o EKF" class="img-fluid rounded" %}
+    </div>
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/quat_ekf.png" title="Quat estimation w/ EKF" class="img-fluid rounded" %}
+    </div>
+</div>
+<div class="caption">
+    A comparison of the target, estimated, and ground truth quaternion over time without (left) and with (right) EKF
+</div>
