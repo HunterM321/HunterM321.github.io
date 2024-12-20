@@ -125,7 +125,7 @@ $$
 \end{bmatrix}.
 $$
 
-Here $$\mathbf{x} \in \mathbb{R}^9$$ is the **state** of the system and $$\mathbf{y} \in \mathbb{R}^6$$ is the measurement. The measurement's primary goal is to correct our state, which I will explain later. One caveat of this state space model is that it is still in the form of **continuous-time ordinary differential equations**, but our computer would much appreciate if we can convert this into **discrete-time algebric equations**. This shouldn't be too hard since we already knew the sampling period $$\Delta t$$ and parameterized the state derivative with $$\mathbf{f}(\mathbf{x}, \mathbf{u}, \boldsymbol{\phi})$$, a **first-order approximation**, synonymous to **[Euler's method](https://en.wikipedia.org/wiki/Euler_method)**, would suffice:
+Here $$\mathbf{x} \in \mathbb{R}^9$$ is the **state** of the system and $$\mathbf{y} \in \mathbb{R}^6$$ is the measurement. The measurement's primary goal is to correct our state, which I will explain later. One caveat of this state space model is that it is still in the form of **continuous-time ordinary differential equations**, but our computer would much appreciate if we can convert this into **discrete-time algebraic equations**. This shouldn't be too hard since we already knew the sampling period $$\Delta t$$ and parameterized the state derivative with $$\mathbf{f}(\mathbf{x}, \mathbf{u}, \boldsymbol{\phi})$$, a **first-order approximation**, synonymous to **[Euler's method](https://en.wikipedia.org/wiki/Euler_method)**, would suffice:
 
 $$
 \begin{aligned}

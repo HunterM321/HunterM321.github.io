@@ -39,7 +39,7 @@ Back when Meta introduced SAM 1, it quickey gained popularity in the image segme
     SAMURAI architecture proposes a motion modeling module and a motion-aware memory selection
 </div>
 
-So how does SAMURAI improve upon the model proposed in SAM 2? In short, since SAM 2 already has very robust segmentation performance, SAMURAI focuses on improving the **tracking** quality of the segmented object. It does so by introducing two novelties—both of which do **NOT** require any additional learnable parameters. The first contribution is the addition of a **motion modeling module**. This module trakcs and predicts the bounding box surrounding the segmented object; specifically, it tracks and predicts the bounding box's top left coordinate, height and width, as well as their corresponding rate of change (i.e., speed). Using this motion cue, the motion modeling module is able to handle difficult scenarios, such as self-occlusions and fast-moving objects. The second contribution is the addition of **motion-aware memory selection** from the memory bank. The new proposed scheme selects high-quality memories from the memory bank. instead of selecting the latest memories using a fix window design. The higher quality memories will directly have an influence during cross-attention with the current frame.
+So how does SAMURAI improve upon the model proposed in SAM 2? In short, since SAM 2 already has very robust segmentation performance, SAMURAI focuses on improving the **tracking** quality of the segmented object. It does so by introducing two novelties—**neither** of which requires any additional learnable parameters. The first contribution is the addition of a **motion modeling module**. This module trakcs and predicts the bounding box surrounding the segmented object; specifically, it tracks and predicts the bounding box's top left coordinate, height and width, as well as their corresponding rate of change (i.e., speed). Using this motion cue, the motion modeling module is able to handle difficult scenarios, such as self-occlusions and fast-moving objects. The second contribution is the addition of **motion-aware memory selection** from the memory bank. The new proposed scheme selects high-quality memories from the memory bank. instead of selecting the latest memories using a fix window design. The higher quality memories will directly have an influence during cross-attention with the current frame.
 
 <div class="row">
     <div class="col-sm-4 mt-3 mt-md-0">
@@ -55,3 +55,64 @@ So how does SAMURAI improve upon the model proposed in SAM 2? In short, since SA
 <div class="caption">
     Frame extractions of video segmention of LV chamber using SAMURAI on EchoNet-Dynamic dataset
 </div>
+
+##### Motion modeling
+The overall goal of this new motion modeling module is to assist in the tracking aspect of SAM 2's VOS. This gives SAM 2 another reference to look at when selecting the best mask from all its predictions. The original SAM 2 only generates an affinity score $$s_{\text{aff}}$$ and an object score $$s_{\text{obj}}$$, the best mask is selected by choosing the highest $$s_{\text{aff}}$$ such that the corresponding $$s_{\text{obj}}$$ is positive:
+
+$$
+\mathbb{M} = \{M_0, M_1, \dots, M_{N-1}\}
+$$
+
+$$
+M_i = \underset{M_i \in \mathbb{M}}{\mathrm{argmax}} \ s_{\text{aff}}(M_i) \quad \text{where} \quad s_{\text{obj}}(M_i) > 0
+$$
+
+SAMURAI generates another score called the **motion** score $$s_{\text{kf}}$$. This score is calculated based on the **IoU** score of the predicted bounding box and each mask generated from SAM 2. In the end, a weighted sum of $$s_{\text{aff}}$$ and $$s_{\text{kf}}$$ is used to determine the mask with the best score:
+
+$$
+M_i = \underset{M_i \in \mathbb{M}}{\mathrm{argmax}} \ \alpha_{\text{aff}} \cdot s_{\text{aff}}(M_i) + (1 - \alpha_{\text{aff}}) \cdot s_{\text{kf}}(M_i) \quad \text{where} \quad s_{\text{obj}}(M_i) > 0
+$$
+
+You might be interested in why the newly introduced motion tracking score $$s_{\text{kf}}$$ bears the subscript _kf_, that's because SAMURAI tracks and predicts the bounding box of the segmented object using **[Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)** (KF). Kalman Filter has no learnable parameters and was originally introduced in control theory to estimate the **state** of a dynamical system. We can always write down the state of a dynamical system in either **continuous-time ordinary differential equation** (ODE) or **discrete-time algebraic equation** format:
+
+$$
+\dot{\mathbf{x}} = A \mathbf{x} \quad \text{for continuous time}
+$$
+
+$$
+\mathbf{x}_{t+1} = F \mathbf{x}_{t} \quad \text{for discrete time}
+$$
+
+For obvious reasons we always prefer to work with discrete-time systems. I went in-depth into KF in my [CubeSat Control System](../2_project) page, so please check it out if you are interested in learning more about it. Here I will go through some of the essential pieces of KF that are unique to SAMURAI instead.
+
+As we mentioned earlier, the motion modeling module outputs an estimated position and speed of the bounding box, which we call the state of the system. We can encode this state into a vector format:
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+x \\
+y \\
+w \\
+h \\
+\dot{x} \\
+\dot{y} \\
+\dot{w} \\
+\dot{h}
+\end{bmatrix}
+$$
+
+KF needs to know the dynamics of the system, or in other words, how the system propagates with time. To achieve this, we need the **system transition matrix**, or $$F$$ in the discrete-time equation above. Assuming that the bounbing box is at constant velocity and the period between two consecutive frame is $$\Delta T$$, we can wrtie down $$F$$:
+
+$$
+F = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & \Delta T & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & \Delta T & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & \Delta T & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & \Delta T \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+$$
