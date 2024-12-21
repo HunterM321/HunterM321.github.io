@@ -134,7 +134,33 @@ $$
 \end{aligned}
 $$
 
-Here I won't go in-depth into the derivation as section 8.4 of the [book](https://ntrs.nasa.gov/citations/20240009554) shows the interesting math behind. In short, the **nonlinear** state transition function $$\mathbf{F}(\mathbf{x}_k, \mathbf{u}_k)$$ advances the present state $$\mathbf{x}_{k}$$ through $$\Delta t$$, and the **nonlinear** noise transition function $$\mathbf{G}(\mathbf{x}_k, \boldsymbol{\phi}_k)$$ makes sure the process noises are also propagated to together produce the next state $$\mathbf{x}_{k+1}$$. $$\mathbf{H}$$ is called the **observation model matrix** which simply links the present state and measurement.
+We can write down $$\mathbf{F}$$ and $$\mathbf{G}$$ as follow:
+
+$$
+\mathbf{F}(\mathbf{x}_k, \mathbf{u}_k) =
+\begin{bmatrix}
+\boldsymbol{\omega}_k \\
+\mathbf{q}_k \\
+\boldsymbol{\beta}_k
+\end{bmatrix}
++
+\begin{bmatrix}
+-\mathbf{J}^{-1} \boldsymbol{\omega}_k \times (\mathbf{J} \boldsymbol{\omega}_k) + \mathbf{J}^{-1} \mathbf{u}_k \\
+\frac{1}{2} \boldsymbol{\Omega}_k \boldsymbol{\omega}_k \\
+\mathbf{0}
+\end{bmatrix} \Delta t
+$$
+
+$$
+\mathbf{G}(\mathbf{x}_k, \boldsymbol{\phi}_k) =
+\begin{bmatrix}
+\boldsymbol{\phi}_{1_k} \\
+\frac{1}{2} \boldsymbol{\Omega}_k \boldsymbol{\phi}_{2_k} \\
+\boldsymbol{\phi}_{3_k}
+\end{bmatrix} \Delta t
+$$
+
+Here I won't go in-depth into the derivation as section 8.4 of the [book](https://ntrs.nasa.gov/citations/20240009554) shows the interesting math behind. In short, the **nonlinear state transition function** $$\mathbf{F}(\mathbf{x}_k, \mathbf{u}_k)$$ advances the present state $$\mathbf{x}_{k}$$ through $$\Delta t$$, and the **nonlinear noise transition function** $$\mathbf{G}(\mathbf{x}_k, \boldsymbol{\phi}_k)$$ makes sure the process noises are also propagated to together produce the next state $$\mathbf{x}_{k+1}$$. $$\mathbf{H}$$ is called the **observation model matrix** which simply links the present state and measurement.
 
 #### Wahba's problem
 It may seem like we have everything in place to talk about the control system, but we are still missing one critical piece. Let's examine the initialization state $$\mathbf{x}_0 \in \mathbb{R}^9$$: we can easily obtain $$\boldsymbol{\omega}_0$$ from our gyro reading and $$\boldsymbol{\beta}_0$$ by setting it to $$\mathbf{0}_3$$, but how do we initialize the reduced quaternion $$\mathbf{q}_0$$? Remember so far we only used our gyro and have left the **accelerometer** and **magnetometer** untouched, so we better make use of them and not leave them to collect dust.
@@ -177,7 +203,7 @@ In a nutshell, EKF operates in a **recursive** manner where in each iteration, i
 
 $$
 \begin{aligned}
-\hat{\mathbf{x}}_{k} & = \mathbf{F}(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{G}(\mathbf{x}_{k-1}, \boldsymbol{\phi}_{k-1}) \\
+\hat{\mathbf{x}}_{k} & = \mathbf{F}(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) \\
 \hat{\mathbf{P}}_{k} & = \mathbf{F}_{k-1} \mathbf{P}_{k-1} \mathbf{F}_{k-1}^\top + \mathbf{L}_{k-1} \mathbf{Q}_{k-1} \mathbf{L}_{k-1}^\top
 \end{aligned}
 $$

@@ -101,15 +101,15 @@ h \\
 \end{bmatrix}
 $$
 
-KF needs to know the dynamics of the system, or in other words, how the system propagates with time. To achieve this, we need the **system transition matrix**, or $$F$$ in the discrete-time equation above. Assuming that the bounbing box is at constant velocity and the period between two consecutive frame is $$\Delta T$$, we can wrtie down $$F$$:
+KF needs to know the dynamics of the system, or in other words, how the system propagates with time. To achieve this, we need the **system transition matrix**, or $$F$$ in the discrete-time equation above. Assuming that the bounbing box is at constant velocity and the period between two consecutive frames is $$\Delta t$$, we can wrtie down $$F$$:
 
 $$
 F = 
 \begin{bmatrix}
-1 & 0 & 0 & 0 & \Delta T & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 & 0 & \Delta T & 0 & 0 \\
-0 & 0 & 1 & 0 & 0 & 0 & \Delta T & 0 \\
-0 & 0 & 0 & 1 & 0 & 0 & 0 & \Delta T \\
+1 & 0 & 0 & 0 & \Delta t & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & \Delta t & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & \Delta t & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & \Delta t \\
 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
