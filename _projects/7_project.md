@@ -11,10 +11,10 @@ related_publications: false
 This page is still being updated, please check back later. I also recommend checking out my [CubeSat Control System](../2_project) page and my [Deep Learning-Based Dynamical System Solver](../4_project) page, some really cool stuff happening there 😃.
 
 #### Overview
-Throughout the 4 months I stayed in UBC's [Robotics and Control Lab](https://rcl.ece.ubc.ca) (RCL) as a research intern, I worked on image and video segmentation of [echocardiogram](https://www.mayoclinic.org/tests-procedures/echocardiogram/about/pac-20393856). Specifically, I focused on chamber segmentation. The ultimate goal of this project is to teach a single agent to **simultaneously** segment all 4 chambers, which could be done by incorporating semantic information or scene graph, instead of training individual agent for each chamber segmentation. I mainly worked on two sub-projects. The first one is baseline testing for [MedSAM](https://www.nature.com/articles/s41467-024-44824-z) and [SAM 2](https://ai.meta.com/sam2/). The second one is video object tracking and segmentation using [SAMURAI](https://yangchris11.github.io/samurai/), which is also a derivative of SAM 2. I would like to focus more on discussing the SAMURAI project as I think it is the more interesting one.
+Throughout the 4 months I stayed in UBC's [Robotics and Control Lab](https://rcl.ece.ubc.ca) (RCL) as a research intern, I worked on image and video segmentation of [echocardiogram](https://www.mayoclinic.org/tests-procedures/echocardiogram/about/pac-20393856). Specifically, I focused on chamber segmentation. The ultimate goal of this project is to teach a single agent to **simultaneously** segment all 4 chambers, which could be done by incorporating semantic information or scene graph, instead of training individual agent for each chamber segmentation. I mainly worked on two sub-projects. The first one is baseline testing for [MedSAM](https://www.nature.com/articles/s41467-024-44824-z) and [SAM 2](https://ai.meta.com/sam2/). The second one is visual object tracking and segmentation using [SAMURAI](https://yangchris11.github.io/samurai/), which is also a derivative of SAM 2. I would like to focus more on discussing the SAMURAI project as I think it is the more interesting one.
 
 #### What is SAMURAI
-SAMURAI stands for _SAM-based Unified and Robust zero-shot visual tracker with motion-Aware Instance-level memory_. Specifically, SAMURAI is a derivative of the **video object segmentation** (VOS) functionality introduced in SAM 2, seeking to improve the **video object tracking** (VOT) performance without a huge architectural modification. Maybe before we introduce SAMURAI's novelty in this domain of knowledge, a quick background of SAM 1 and SAM 2's architectures would come in handy.
+SAMURAI stands for _SAM-based Unified and Robust zero-shot visual tracker with motion-Aware Instance-level memory_. Specifically, SAMURAI is a derivative of the **video object segmentation** (VOS) functionality introduced in SAM 2, seeking to improve the **visual object tracking** (VOT) performance without a huge architectural modification. Maybe before we introduce SAMURAI's novelty in this domain of knowledge, a quick background of SAM 1 and SAM 2's architectures would come in handy.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -57,7 +57,7 @@ So how does SAMURAI improve upon the model proposed in SAM 2? In short, since SA
 </div>
 
 ##### Motion modeling
-The overall goal of this new motion modeling module is to assist in the tracking aspect of SAM 2's VOS. This gives SAM 2 another reference to look at when selecting the best mask from all its predictions. The original SAM 2 only generates an affinity score $$s_{\text{aff}}$$ and an object score $$s_{\text{obj}}$$, the best mask is selected by choosing the highest $$s_{\text{aff}}$$ such that the corresponding $$s_{\text{obj}}$$ is positive:
+The overall goal of this new motion modeling module is to assist in the tracking aspect of SAM 2's VOS. This gives SAM 2 another reference to look at when selecting the best mask from all its predictions. The original SAM 2 only generates an affinity score $$s_{\text{aff}}$$ and an object score $$s_{\text{obj}}$$ for each predicted mask, the best mask is selected by choosing the highest $$s_{\text{aff}}$$ such that the corresponding $$s_{\text{obj}}$$ is positive:
 
 $$
 \mathbb{M} = \{M_0, M_1, \dots, M_{N-1}\}
@@ -83,25 +83,27 @@ $$
 \mathbf{x}_{t+1} = F \mathbf{x}_{t} \quad \text{for discrete time}
 $$
 
-For obvious reasons we always prefer to work with discrete-time systems. I went in-depth into KF in my [CubeSat Control System](../2_project) page, so please check it out if you are interested in learning more about it. Here I will go through some of the essential pieces of KF that are unique to SAMURAI instead.
+For obvious reasons our computers always prefer to work with discrete-time systems. I went in-depth into KF in my [CubeSat Control System](../2_project) page, so please check it out if you are interested in learning more about it. Here I will go through some of the essential pieces of KF that are unique to SAMURAI instead.
 
 As we mentioned earlier, the motion modeling module outputs an estimated position and speed of the bounding box, which we call the state of the system. We can encode this state into a vector format:
 
 $$
 \mathbf{x} =
 \begin{bmatrix}
-x \\
-y \\
-w \\
-h \\
-\dot{x} \\
-\dot{y} \\
-\dot{w} \\
-\dot{h}
-\end{bmatrix}
+x & y & w & h & \dot{x} & \dot{y} & \dot{w} & \dot{h}
+\end{bmatrix}^\top
 $$
 
-KF needs to know the dynamics of the system, or in other words, how the system propagates with time. To achieve this, we need the **system transition matrix**, or $$F$$ in the discrete-time equation above. Assuming that the bounbing box is at constant velocity and the period between two consecutive frames is $$\Delta t$$, we can wrtie down $$F$$:
+KF needs to know the dynamics of the system, or in other words, how the system propagates with time. To achieve this, we need the **linear system transition matrix**, or $$F$$, in the discrete-time equation above. Note that we consider this to be a simple linear system, otherwise we would need to utilize the Extended Kalman Filter (EKF), which will be a lot more work. Assuming all velocities are constant and the period between two consecutive frames is $$\Delta t$$, and using the x-coordinate as an example:
+
+$$
+\begin{aligned}
+x_{t+1} &= x_t + \dot{x}_t \Delta t \\
+\dot{x}_{t+1} &= \dot{x}_t
+\end{aligned}
+$$
+
+The rest coordinates all follow. Hence, we can wrtie down $$F$$:
 
 $$
 F = 
