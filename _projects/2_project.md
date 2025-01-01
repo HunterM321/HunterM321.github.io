@@ -284,3 +284,5 @@ In reality, it is pretty much guaranteed that $$\mathbf{K}_k$$ would be somewher
 <div class="caption">
     A comparison of the target, estimated, and ground truth quaternion over time without (left) and with (right) EKF
 </div>
+
+The above image shows how much better the estimated quaternion becoems after utilizing EKF. This plot is generated using our in-house developed satellite simulation called ALEASIM. This is still an on-going project in AOCS team and we are planning to open-source it in the future.
