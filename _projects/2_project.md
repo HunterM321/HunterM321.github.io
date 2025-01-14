@@ -70,7 +70,7 @@ Where:
 - $$\mathbf{J}$$: Inertial matrix of the CubeSat
 - $$\boldsymbol{\omega}$$: CubeSat angular rate with respect to the inertial frame  
 - $$\mathbf{u}$$: Control input
-- $$\mathbf{\Omega}$$: [Skew-symmetric](https://en.wikipedia.org/wiki/Skew-symmetric_matrix#:~:text=In%20mathematics%2C%20particularly%20in%20linear,whose%20transpose%20equals%20its%20negative.) matrix defined as
+- $$\mathbf{\Omega}$$: Matrix defined as
 
 $$
 \mathbf{\Omega} =
