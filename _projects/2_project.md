@@ -29,7 +29,7 @@ I have been with the team since 2021 and I currently lead the **Attitude and Orb
 
 <div class="row">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/aleasat_assembly.png" title="aleasat assembly" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/aleasat_assembly.jpg" title="aleasat assembly" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/aleasat_testpod.jpg" title="ALEASAT integrated inside the TestPod" class="img-fluid rounded z-depth-1" %}
