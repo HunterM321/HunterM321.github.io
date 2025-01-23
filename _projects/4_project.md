@@ -85,7 +85,7 @@ By separating spatial and temporal feature learning into distinct stages, MambaC
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/patch_mamba.jpg" title="MambaPatchMOL architecture" class="img-fluid rounded" %}
+        {% include figure.liquid loading="eager" path="assets/img/patch_mamba.png" title="MambaPatchMOL architecture" class="img-fluid rounded" %}
     </div>
 </div>
 <div class="caption">
@@ -158,7 +158,7 @@ Both MambaCNNMOL and MambaPatchMOL demonstrated strong performance in learning s
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/s2o.jpg" title="S2O loss" class="img-fluid rounded" %}
+        {% include figure.liquid loading="eager" path="assets/img/s2o.png" title="S2O loss" class="img-fluid rounded" %}
     </div>
 </div>
 <div class="caption">
